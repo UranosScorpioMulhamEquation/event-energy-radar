@@ -190,7 +190,7 @@ with col1:
     input_method = st.radio("Select Input Method:", ["Select Team from List", "Manual Entry"])
     
     if input_method == "Select Team from List":
-        selected_team = st.selectbox("Select National Team:", options=list(TEAMS_DB.keys()))
+        selected_team = st.selectbox("If it's a sporting event, Select National Team:", options=list(TEAMS_DB.keys()))
         birth_date = TEAMS_DB[selected_team]
         st.write(f"Inception Date: **{birth_date.strftime('%Y-%m-%d')}**")
     else:
@@ -198,8 +198,8 @@ with col1:
 
 with col2:
     st.subheader("2. Target Event Details")
-    event_date = st.date_input("Select Event Date", value=date(2026, 7, 19))
-    event_time = st.time_input("Select Event Time", value=time(20, 0)) 
+    event_date = st.date_input("Select Event Date Or Critical Date", value=date(2026, 7, 19), min_value=date(1800, 1, 1), max_value=date(2100, 1, 1))
+    event_time = st.time_input("Select Event Time , If unknown set 08.00", value=time(20, 0)) 
 
 st.markdown("---")
 
